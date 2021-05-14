@@ -21,11 +21,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         log.info("Dao Authentication Provider");
         http.authorizeRequests()
                 .antMatchers("/authenticated/**").authenticated()
-                .antMatchers("/user_info").authenticated()
-                .antMatchers("/admin/**").hasAnyRole("ADMIN", "SUPERADMIN") // ROLE_ADMIN, ROLE_SUPERADMIN
-                .anyRequest().permitAll()
                 .and()
-                .formLogin();
+                .logout().logoutSuccessUrl("/");
     }
 
     @Bean
