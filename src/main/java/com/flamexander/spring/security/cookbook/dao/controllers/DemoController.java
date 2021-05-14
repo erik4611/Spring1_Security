@@ -40,4 +40,8 @@ public class DemoController {
         User user = userService.findByUsername(principal.getName()).orElseThrow(() -> new RuntimeException("Unable to find user by username: " + principal.getName()));
         return "Authenticated user info: " + user.getUsername() + " : " + user.getEmail();
     }
+    @GetMapping("/authenticated")
+    public String pageForAuthenticatedUsers() {
+        return "unavailable for you";
+    }
 }
